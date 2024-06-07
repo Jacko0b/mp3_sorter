@@ -1,9 +1,14 @@
 #!/bin/bash
 
 # Konfiguracja skryptu
-VERSION="1.2.1"
+VERSION="1.1.0"
 REPO_URL="https://github.com/Jacko0b/mp3_sorter"
 RC_FILE="$HOME/mp3_sorter/.mp3_sorter_rc"
+
+# Wczytywanie pliku rc
+if [ -f "$RC_FILE" ]; then
+    source "$RC_FILE"
+fi
 
 # Funkcja wyświetlająca pomoc
 function show_help {
@@ -31,11 +36,6 @@ function update_script {
         echo "Nie udało się zaktualizować skryptu."
     fi
 }
-
-# Wczytywanie pliku rc
-if [ -f "$RC_FILE" ]; then
-    source "$RC_FILE"
-fi
 
 # Domyślne wartości
 DEFAULT_SORT_CRITERIA=${DEFAULT_SORT_CRITERIA:-"artist"}
