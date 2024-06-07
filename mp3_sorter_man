@@ -8,9 +8,9 @@ mp3_sorter -s [kryterium_sortowania] [ścieżki_do_plików_mp3...]
 .SH OPIS
 Skrypt mp3_sorter jest narzędziem przeznaczonym do sortowania plików MP3 na podstawie wybranych kryteriów, takich jak tytuł, artysta, album lub rok wydania. Umożliwia również wyświetlanie wersji skryptu oraz aktualizację do najnowszej wersji z repozytorium Git.
 .SH OPCJE
--s [kryterium_sortowania]: Określa kryterium sortowania (dostępne kryteria: title, artist, album, year).
--v: Wyświetla wersję skryptu.
--u: Aktualizuje skrypt do najnowszej wersji z repozytorium.
+ -s [kryterium_sortowania]: Określa kryterium sortowania (dostępne kryteria: title, artist, album, year). 
+ -v: Wyświetla wersję skryptu.
+ -u: Aktualizuje skrypt do najnowszej wersji z repozytorium.
 .SH BŁĘDY.
 Brak znanych błędów.
 .SH AUTOR
