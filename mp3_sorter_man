@@ -1,0 +1,17 @@
+.\" Manpage for mp3_sorter.
+.\" Kontakt z s200816@student.pg.edu.pl by poprawić błędy lub literówki.
+.TH man 8 "05 Czerwiec 2024" "1.2.1" "mp3_sorter man"
+.SH NAZWA
+mp3_sorter \- posortuj pliki mp3 wg wybranych metadanych
+.SH POLECENIE
+mp3_sorter -s [kryterium_sortowania] [ścieżki_do_plików_mp3...]
+.SH OPIS
+Skrypt mp3_sorter jest narzędziem przeznaczonym do sortowania plików MP3 na podstawie wybranych kryteriów, takich jak tytuł, artysta, album lub rok wydania. Umożliwia również wyświetlanie wersji skryptu oraz aktualizację do najnowszej wersji z repozytorium Git.
+.SH OPCJE
+-s [kryterium_sortowania]: Określa kryterium sortowania (dostępne kryteria: title, artist, album, year).
+-v: Wyświetla wersję skryptu.
+-u: Aktualizuje skrypt do najnowszej wersji z repozytorium.
+.SH BŁĘDY.
+Brak znanych błędów.
+.SH AUTOR
+Jakub Sobota 200816
