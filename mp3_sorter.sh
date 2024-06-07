@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Konfiguracja skryptu
-VERSION="1.1.0"
+VERSION="1.0.0"
 REPO_URL="https://github.com/Jacko0b/mp3_sorter"
 RC_FILE="$HOME/mp3_sorter/.mp3_sorter_rc"
 
@@ -22,7 +22,7 @@ function show_version {
 # Funkcja aktualizująca skrypt do najnowszej wersji
 function update_script {
     echo "Aktualizowanie skryptu z repozytorium..."
-    curl -s "$REPO_URL/raw/main/mp3_sorter.sh" -o "$0"
+    git pull origin main
     if [ $? -eq 0 ]; then
         echo "Skrypt został pomyślnie zaktualizowany."
         chmod +x "$0"
