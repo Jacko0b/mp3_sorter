@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Konfiguracja skryptu
-VERSION="1.0.0"
-REPO_URL="https://github.com/twoje_uzytkownik/twoje_repozytorium"
+VERSION="1.0.1"
+REPO_URL="https://github.com/Jacko0b/mp3_sorter"
 RC_FILE="$HOME/mp3_sorter/.mp3_sorter_rc"
 
 # Funkcja wyświetlająca pomoc
