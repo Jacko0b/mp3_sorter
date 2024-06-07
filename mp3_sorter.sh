@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Konfiguracja skryptu
-VERSION="1.0.0"
+VERSION="1.1.0"
 REPO_URL="https://github.com/Jacko0b/mp3_sorter"
 RC_FILE="$HOME/mp3_sorter/.mp3_sorter_rc"
 
@@ -85,7 +85,7 @@ fi
 function extract_metadata {
     local file="$1"
     local metadata_key="$2"
-    ffmpeg -i "$file" 2>&1 | grep -i "$metadata_key" | head -n 1 | sed -e "s/.*: //"
+    ffprobe -v quiet -print_format flat -show_format "$file" | grep -i "$metadata_key" | sed -e 's/^.*=//'
 }
 
 # Licznik przetworzonych plików
@@ -94,16 +94,15 @@ processed_count=0
 # Przetwarzanie plików MP3
 for file in "$@"; do
     if [ -d "$file" ]; then
-        mp3_files=$(find "$file" -type f -name "*.mp3")
-        cd $file
-        
+        # Zapisz wszystkie pliki MP3 w katalogu do tablicy
+        mapfile -d '' mp3_files < <(find "$file" -type f -name "*.mp3" -print0)
     else
-        mp3_files=$file
+        mp3_files=("$file")
     fi
 
     echo "${mp3_files[1]}"
 
-    for mp3 in $mp3_files; do
+    for mp3 in "${mp3_files[@]}"; do
         if [ ! -f "$mp3" ]; then
             echo "Plik nie istnieje: $mp3" 
             continue
