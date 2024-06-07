@@ -22,6 +22,7 @@ function show_version {
 # Funkcja aktualizująca skrypt do najnowszej wersji
 function update_script {
     echo "Aktualizowanie skryptu z repozytorium..."
+    git reset --hard HEAD
     git pull origin main
     if [ $? -eq 0 ]; then
         echo "Skrypt został pomyślnie zaktualizowany."
