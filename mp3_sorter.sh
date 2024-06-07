@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Konfiguracja skryptu
-VERSION="1.0.1"
+VERSION="1.0.0"
 REPO_URL="https://github.com/Jacko0b/mp3_sorter"
 RC_FILE="$HOME/mp3_sorter/.mp3_sorter_rc"
 
@@ -27,7 +27,7 @@ function update_script {
         echo "Skrypt został pomyślnie zaktualizowany."
         chmod +x "$0"
     else
-        echo "Nie udało się zaktualizować skryptu." >&2
+        echo "Nie udało się zaktualizować skryptu."
     fi
 }
 
@@ -58,7 +58,7 @@ while getopts ":s:vu" opt; do
             exit 0
             ;;
         \?)
-            echo "Nieznana opcja: -$OPTARG" >&2
+            echo "Nieznana opcja: -$OPTARG"
             show_help
             exit 1
             ;;
@@ -69,22 +69,22 @@ shift $((OPTIND-1))
 
 # Sprawdzenie poprawności kryterium sortowania
 if [[ "$sort_criteria" != "title" && "$sort_criteria" != "artist" && "$sort_criteria" != "album" && "$sort_criteria" != "year" ]]; then
-    echo "Błędne kryterium sortowania: $sort_criteria" >&2
+    echo "Błędne kryterium sortowania: $sort_criteria"
     show_help
     exit 1
 fi
 
 # Sprawdzenie, czy podano co najmniej jeden plik
 if [ $# -lt 1 ]; then
-    echo "Brak podanych ścieżek do plików MP3" >&2
+    echo "Brak podanych ścieżek do plików MP3"
     show_help
     exit 1
 fi
 
 # Funkcja do wyciągania metadanych z plików MP3
 function extract_metadata {
-    local file=$1
-    local metadata_key=$2
+    local file="$1"
+    local metadata_key="$2"
     ffmpeg -i "$file" 2>&1 | grep -i "$metadata_key" | head -n 1 | sed -e "s/.*: //"
 }
 
@@ -95,13 +95,17 @@ processed_count=0
 for file in "$@"; do
     if [ -d "$file" ]; then
         mp3_files=$(find "$file" -type f -name "*.mp3")
+        cd $file
+        
     else
         mp3_files=$file
     fi
 
+    echo "${mp3_files[1]}"
+
     for mp3 in $mp3_files; do
         if [ ! -f "$mp3" ]; then
-            echo "Plik nie istnieje: $mp3" >&2
+            echo "Plik nie istnieje: $mp3" 
             continue
         fi
 
@@ -121,7 +125,7 @@ for file in "$@"; do
         esac
 
         if [ -z "$metadata" ]; then
-            echo "Brak metadanych $sort_criteria dla pliku: $mp3" >&2
+            echo "Brak metadanych $sort_criteria dla pliku: $mp3"
             metadata="inne"
         fi
 
@@ -135,7 +139,7 @@ for file in "$@"; do
             echo "Przeniesiono $mp3 do $folder/"
             ((processed_count++))
         else
-            echo "Błąd podczas przenoszenia $mp3 do $folder/" >&2
+            echo "Błąd podczas przenoszenia $mp3 do $folder/"
         fi
     done
 done
