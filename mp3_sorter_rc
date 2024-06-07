@@ -1,0 +1,5 @@
+# Domyślne kryterium sortowania
+DEFAULT_SORT_CRITERIA="artist"
+
+# Domyślna ścieżka do katalogu, do którego będą przenoszone pliki
+DESTINATION_DIR="$HOME/mp3_sorter/mp3_sorted"
