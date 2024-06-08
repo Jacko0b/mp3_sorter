@@ -1,6 +1,6 @@
 .\" Manpage for mp3_sorter.
 .\" Kontakt z s200816@student.pg.edu.pl by poprawić błędy lub literówki.
-.TH man 8 "05 Czerwiec 2024" "1.2.1" "mp3_sorter man"
+.TH man 8 "05 Czerwiec 2024" "1.2.3" "mp3_sorter man"
 .SH NAZWA
 mp3_sorter \- posortuj pliki mp3 wg wybranych metadanych
 .SH POLECENIE
